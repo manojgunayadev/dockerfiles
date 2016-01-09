@@ -234,7 +234,7 @@
     <!-- This defines index configuration which is used in meta data search feature of the registry -->
     <indexingConfiguration>
         <startingDelayInSeconds>60</startingDelayInSeconds>
-        <indexingFrequencyInSeconds>2</indexingFrequencyInSeconds>
+        <indexingFrequencyInSeconds>3</indexingFrequencyInSeconds>
         <!--number of resources submit for given indexing thread -->
         <batchSize>50</batchSize>
         <!--number of worker threads for indexing -->
@@ -273,7 +273,7 @@
       <dataSource>jdbc/<%= @config_db %></dataSource>
     </dbConfig>
 
-    <remoteInstance url="https://registryernance.cloud-test.wso2.com">
+    <remoteInstance url="https://registryernance.wso2.com">
       <id>config</id>
       <dbConfig>config</dbConfig>
       <readOnly>false</readOnly>
@@ -291,7 +291,7 @@
     </dbConfig>
 
     <%- database = @registry_database -%>
-    <remoteInstance url="https://registryernance.cloud-test.wso2.com">
+    <remoteInstance url="https://registryernance.wso2.com">
       <id>governance</id>
       <dbConfig>governance</dbConfig>
       <readOnly>false</readOnly>

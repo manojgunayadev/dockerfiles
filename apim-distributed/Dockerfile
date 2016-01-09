@@ -42,12 +42,12 @@ RUN apt-get update
 RUN apt-get -y install unzip tree htop puppet
 
 # Copy Oracle JDK into /opt directory
-ADD dist/jdk-7u71-linux-x64.tar.gz /opt/
+ADD dist/jdk-8u45-linux-x64.tar.gz /opt/
 # eg :-
 # ADD dist/<Latest Oracle JDK tar> /opt/
 
 # Create symlink to JDK as /opt/java
-RUN ln -s /opt/jdk1.7.0_71 /opt/java && rm -rf /opt/jdk-7u71-linux-x64.tar.gz
+RUN ln -s /opt/jdk1.8.0_45 /opt/java && rm -rf /opt/jdk-8u45-linux-x64.tar.gz
 # eg :-
 # RUN ln -s /opt/<JDK decompressed directory name> /opt/java
 
@@ -55,7 +55,7 @@ RUN ln -s /opt/jdk1.7.0_71 /opt/java && rm -rf /opt/jdk-7u71-linux-x64.tar.gz
 RUN mkdir -p /mnt/packs /etc/puppet/hieradata
 
 # Copy WSO2 product zip into /mnt/packs
-ADD dist/wso2am-1.9.1.zip /mnt/packs/
+ADD dist/wso2am-1.10.0.zip /mnt/packs/
 # eg :-
 # ADD dist/<WSO2 product zip> /mnt/packs/
 
@@ -75,5 +75,5 @@ EXPOSE 9443 9763 8283 8243 4000
 
 # Run puppet and tail the carbon log file
 # Tailing the log file is required otherwise docker instance will get killed after running puppet apply
-CMD /bin/bash -c 'puppet apply --modulepath=/etc/puppet/modules/ -e "include apimanager" && tailf /mnt/*/wso2am-1.9.1/repository/logs/wso2carbon.log'
+CMD /bin/bash -c 'puppet apply --modulepath=/etc/puppet/modules/ -e "include apimanager" && tailf /mnt/*/wso2am-1.10.0/repository/logs/wso2carbon.log'
 

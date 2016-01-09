@@ -51,21 +51,37 @@ Install docker compose
 Start a Docker containers using docker compose 
 ----------------------------------------------
 
-Note: Do *not* start all containes at once because it takes sometime to start the mysql server and populate the databases.
+Note: Do *not* start all containers at once because it takes sometime to start the database server and populate the databases.
 
 Remove unused docker instances with same name
 
     docker-compose rm 
+
+Start Database server
  
-Start MySQL server 
+    To Start MySQL server 
 
-    docker-compose up -d mysql
+        docker-compose up -d mysql
+
+    -- Or --
+
+    To Start PostgreSQL server 
+
+        docker-compose up -d postgresql
         
-Start MySQL client
+Start Database client
+ 
+    To Start MySQL client
 
-    docker-compose up -d mysql-client
+        docker-compose up -d mysql-client
 
-Note: MySQL client will get killed it self after populating initial databases and tables
+    -- Or --
+
+    To Start PostgreSQL client
+
+        docker-compose up -d postgresql-client
+
+Note: MySQL/PostgreSQL client will get killed it self after populating initial databases and tables
 
 Start APIM
 

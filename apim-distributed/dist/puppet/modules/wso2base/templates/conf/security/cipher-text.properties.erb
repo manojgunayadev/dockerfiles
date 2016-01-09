@@ -1,9 +1,15 @@
-UserManager.AdminUser.Password=<%= @admin_password_enc %>
-UserStoreManager.Property.ConnectionPassword=<%= @admin_connectionpasswd_enc %>
+# This is the default file based secret repository, used by Secret Manager of synapse secure vault
+# 
+# By default, This file contains the secret alias names Vs the plain text passwords enclosed with '[]' brackets
+#
+# In Production environments, It is recommend to replace those plain text password by the encrypted values. CipherTool can be used for it.
+#
 
 Carbon.Security.KeyStore.Password=<%= @keystore_password_enc %>
 Carbon.Security.KeyStore.KeyPassword=<%= @keystore_password_enc %>
 Carbon.Security.TrustStore.Password=<%= @truststore_password_enc %>
+UserManager.AdminUser.Password=<%= @admin_password_enc %>
+UserStoreManager.Property.ConnectionPassword=<%= @admin_connectionpasswd_enc %>
 Carbon.Security.RegistryKeyStore.KeyPassword=<%= @registrykeystore_keypassword_enc %>
 Carbon.Security.RegistryKeyStore.Password=<%= @registrykeystore_password_enc %>
 
@@ -17,16 +23,19 @@ Datasources.WSO2_APPMANAGER_DB.Configuration.Password=<%= @appmgt_database['pass
 Datasources.WSO2_APISTATS_DB.Configuration.Password=<%= @apistats_database['password_enc'] %>
 Datasources.WSO2_APIMGT_DB.Configuration.Password=<%= @apimgt_database['password_enc'] %>
 
-#
-#Log4j.Appender.LOGEVENT.Password=
-#Axis2.Https.Listener.TrustStore.Password=
-#Axis2.Https.Listener.KeyStore.Password=
-#Axis2.Https.Listener.KeyStore.KeyPassword=
-#Axis2.Https.Sender.TrustStore.Password=
-#Axis2.Https.Sender.KeyStore.Password=
-#Axis2.Https.Sender.KeyStore.KeyPassword=
-#Axis2.Mailto.Parameter.Password=
+Server.Service.Connector.keystorePass=[wso2carbon]
+#Datasource.WSO2AM_DB.configuration.password=[wso2carbon]
+#UserStoreManager.Property.ConnectionPassword=[admin]
+#UserStoreManager.Property.password=[admin]
+#AuthManager.Password=[admin]
+#APIGateway.Password=[admin]
+#APIKeyValidator.Password=[admin]
+#APIStore.Password=[admin]
+#Security.UserTrustedRPStore.Password=[wso2carbon]
+#Security.UserTrustedRPStore.KeyPassword=[wso2carbon]
+#Identity.System.StorePass=[wso2carbon]
+#MultifactorAuthentication.XMPPSettings.XMPPConfig.XMPPPassword=[wso2carbon]
 
 
-## BAM
-Bam.Receiver.Password=<%= @receiver_password_enc %>
+
+

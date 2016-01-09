@@ -9,8 +9,8 @@ mysql-client:
     container_name: mysql-client
     image: mysql:5.6.27
     volumes:
-        - ./dist/database:/mysql
-    command: sh -c /mysql/create_dbs.sh
+        - ./dist/database:/dbscripts
+    command: sh -c /dbscripts/create_mysql_dbs.sh
     links:
         - mysql
 mysql:
@@ -18,3 +18,18 @@ mysql:
     image: mysql:5.6.27
     environment:
         - MYSQL_ROOT_PASSWORD=password
+
+postgresql-client:
+    container_name: postgresql-client
+    image: postgres:9.4
+    volumes:
+        - ./dist/database:/dbscripts
+    command: sh -c /dbscripts/create_postgre_dbs.sh
+    links:
+        - postgresql
+
+postgresql:
+    container_name: postgresql
+    image: postgres:9.4
+    environment:
+        - POSTGRES_PASSWORD=password
