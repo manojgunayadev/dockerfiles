@@ -1,2 +1,4 @@
 jdk-*.gz
 wso2am*.zip
+mysql-connector-java-*.jar
+postgresql-*.jar
