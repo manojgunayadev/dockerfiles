@@ -19,7 +19,7 @@
 # This class installs WSO2 API Manager
 #
 # Parameters:
-#  version            => '1.9.1',
+#  version            => '1.10.0',
 #  offset             => 0,
 #  config_database    => 'config',
 #  maintenance_mode   => 'zero',
@@ -43,7 +43,7 @@
 #
 
 class apimanager (
-  $version            = '1.9.1',
+  $version            = '1.10.0',
   $offset             = 0,
   $services           = undef,
   $members            = undef,

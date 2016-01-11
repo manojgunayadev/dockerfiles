@@ -592,9 +592,9 @@
 	In master nodes you need to set both AutoCommit and AutoCheckout to true
 	and in  worker nodes set only AutoCheckout to true.
     -->
+      <DeploymentSynchronizer>
       <%- if @clustering -%>
       <%- if @amtype == 'gateway' -%>
-      <DeploymentSynchronizer>
           <Enabled>true</Enabled>
         <%- if @sub_cluster_domain == 'mgt' -%>
           <AutoCommit>true</AutoCommit>
@@ -607,9 +607,7 @@
           <SvnUser><%= @svn_user %></SvnUser>
           <SvnPassword><%= @svn_password %></SvnPassword>
           <SvnUrlAppendTenantId>true</SvnUrlAppendTenantId>
-      </DeploymentSynchronizer>
       <%- elsif @amtype == 'pubstore' -%>
-      <DeploymentSynchronizer>
           <Enabled>true</Enabled>
           <AutoCommit>true</AutoCommit>
           <AutoCheckout>true</AutoCheckout>
@@ -618,9 +616,7 @@
           <SvnUser><%= @svn_user %></SvnUser>
           <SvnPassword><%= @svn_password %></SvnPassword>
           <SvnUrlAppendTenantId>true</SvnUrlAppendTenantId>
-      </DeploymentSynchronizer>
       <%- elsif @amtype == 'keymanager' -%>
-      <DeploymentSynchronizer>
           <Enabled>true</Enabled>
           <AutoCommit>true</AutoCommit>
           <AutoCheckout>true</AutoCheckout>
@@ -629,9 +625,11 @@
           <SvnUser><%= @svn_user %></SvnUser>
           <SvnPassword><%= @svn_password %></SvnPassword>
           <SvnUrlAppendTenantId>true</SvnUrlAppendTenantId>
+      <%- end -%>
+      <%- else -%>
+          <Enabled>false</Enabled>
+      <%- end -%>
       </DeploymentSynchronizer>
-      <%- end -%>
-      <%- end -%>
 
     <!-- Deployment Synchronizer Configuration. Uncomment the following section when running with "registry based" dep sync.
         In master nodes you need to set both AutoCommit and AutoCheckout to true
