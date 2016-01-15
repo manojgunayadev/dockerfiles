@@ -6,17 +6,13 @@ Build a distributer API Manager docker container cluster
 
 ### Build an API manager docker image
 
-Get a git clone of the build repository.
+Download [Oracle JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) tar.gz and place it in 'dockerfiles/apim-distributed/dist/'
 
-    git clone https://github.com/thilinapiy/dockerfiles(https://github.com/thilinapiy/dockerfiles)
-        
-Download [Oracle JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) tar.gz (not JDK 8) and place it in 'dockerfiles/apim-distributed/dist/'
-
-    mv <download path>/jdk-7u71-linux-x64.tar.gz dockerfiles/apim-distributed/dist/
+    mv <download path>/jdk-8u45-linux-x64.tar.gz dockerfiles/apim-distributed/dist/
         
 Download [WSO2 API manager](http://wso2.com/products/api-manager) and place that in 'dockerfiles/apim-distributed/dist/'
 
-    mv <download path>/wso2am-1.9.1.zip dockerfiles/apim-distributed/dist/
+    mv <download path>/wso2am-1.10.0.zip dockerfiles/apim-distributed/dist/
 
 Download [SVN Kit] () and place it in 'wso2base' puppet module
 
@@ -85,7 +81,24 @@ Note: MySQL/PostgreSQL client will get killed it self after populating initial d
 
 Start APIM
 
-    docker-compose up -d apim-node1
+    To Start a standalone container instance of APIM
+    	
+	docker-compose up -d apim-node1
+
+
+    To Start a key manager container instance of APIM
+
+	docker-compose up -d apim-keymanager
+
+
+    To Start a gateway container instance of APIM
+
+	docker-compose up -d apim-gateway
+
+
+    To Start a pub/store container instance of APIM
+
+	docker-compose up -d apim-pubstore
 
 
 Login to any docker instance
