@@ -68,6 +68,7 @@ ENV HOME /root
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/java/bin
 ENV JAVA_HOME /opt/java
 ENV FACTER_fqdn apimanager
+ENV APIM_NODE apimanager
 
 WORKDIR /root
 
@@ -75,5 +76,5 @@ EXPOSE 9443 9763 8283 8243 4000
 
 # Run puppet and tail the carbon log file
 # Tailing the log file is required otherwise docker instance will get killed after running puppet apply
-CMD /bin/bash -c 'puppet apply --modulepath=/etc/puppet/modules/ -e "include apimanager" && tailf /mnt/*/wso2am-1.10.0/repository/logs/wso2carbon.log'
+CMD /bin/bash -c 'puppet apply --modulepath=/etc/puppet/modules/ -e "include $APIM_NODE" && tailf /mnt/*/wso2am-1.10.0/repository/logs/wso2carbon.log'
 

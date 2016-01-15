@@ -3,8 +3,37 @@ apim-node1:
     image: apim
     environment:
         - FACTER_fqdn=apimanager
+        - APIM_NODE=apimanager
     links:
         - mysql
+
+apim-gateway:
+    container_name: apim-gateway
+    image: apim
+    environment:
+        - FACTER_fqdn=apimanager
+        - APIM_NODE=apimanager::gateway
+    links:
+        - mysql
+
+apim-pubstore:
+    container_name: apim-pubstore
+    image: apim
+    environment:
+        - FACTER_fqdn=apimanager
+        - APIM_NODE=apimanager::pubstore
+    links:
+        - mysql
+
+apim-keymanager:
+    container_name: apim-keymanager
+    image: apim
+    environment:
+        - FACTER_fqdn=apimanager
+        - APIM_NODE=apimanager::keymanager
+    links:
+        - mysql
+
 mysql-client:
     container_name: mysql-client
     image: mysql:5.6.27

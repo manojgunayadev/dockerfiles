@@ -15,7 +15,7 @@
 #----------------------------------------------------------------------------
 
 class apimanager::keymanager (
-  $version            = undef,
+  $version            = '1.10.0',
   $offset             = 0,
   $services           = undef,
   $members            = undef,
@@ -23,12 +23,12 @@ class apimanager::keymanager (
   $sub_cluster_domain = "mgt",
   $maintenance_mode   = 'refresh',
   $localmember_port   = '4000',
-  $config_db          = governance,
+  $config_db          = 'dbApimConfig',
   $depsync            = false,
   $cloud              = false,
   $owner              = 'root',
   $group              = 'root',
-  $target             = '/mnt',
+  $target             = "/mnt/$ipaddress",
   $auto_scaler        = false,
   $auto_failover      = false,
   $securevault        = false,) inherits apimanager::params {
