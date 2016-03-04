@@ -39,7 +39,11 @@
             </AdminUser>
             <EveryOneRoleName>everyone</EveryOneRoleName> <!-- By default users in this role sees the registry root -->
             <Property name="isCascadeDeleteEnabled">true</Property>
-            <Property name="dataSource">jdbc/userstore</Property>
+            <%-if @amtype == 'gateway')  -%>
+                 <Property name="dataSource">jdbc/WSO2CARBON_DB</Property>
+            <%- else -%>  
+                 <Property name="dataSource">jdbc/WSO2UM_DB</Property>
+             <%- end -%>  
         </Configuration>
 
 	    <!-- Following is the configuration for internal JDBC user store. This user store manager is based on JDBC.

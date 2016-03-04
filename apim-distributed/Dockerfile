@@ -42,12 +42,12 @@ RUN apt-get update
 RUN apt-get -y install unzip tree htop puppet
 
 # Copy Oracle JDK into /opt directory
-ADD dist/jdk-8u45-linux-x64.tar.gz /opt/
+ADD dist/jdk-8u65-linux-x64.tar.gz /opt/
 # eg :-
 # ADD dist/<Latest Oracle JDK tar> /opt/
 
 # Create symlink to JDK as /opt/java
-RUN ln -s /opt/jdk1.8.0_45 /opt/java && rm -rf /opt/jdk-8u45-linux-x64.tar.gz
+RUN ln -s /opt/jdk1.8.0_65 /opt/java && rm -rf /opt/jdk-8u65-linux-x64.tar.gz
 # eg :-
 # RUN ln -s /opt/<JDK decompressed directory name> /opt/java
 

@@ -66,7 +66,7 @@ class wso2base::params {
   # Database details
   $config_database = hiera('config_database', {
     'hostname'     => "$mysql_server",
-    'database'     => '',
+    'database'     => 'dbApimConfig',
     'username'     => 'ConfigDBUser',
     'password'     => 'ConfigDBUserPass',
     'password_enc' => ""

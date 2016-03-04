@@ -204,32 +204,29 @@
         <cacheId>wso2carbon@jdbc:h2:repository/database/WSO2CARBON_DB</cacheId>
     </remoteInstance-->
 
-    <!-- This defines the Atom based remote registry instance configuration -->
-
-    <!--remoteInstance url="https://localhost:9443/registry">
-        <id>instanceid</id>
-        <username>username</username>
-        <password>password</password>
-        <type>ws</type>
-        <cacheId>wso2carbon@jdbc:h2:repository/database/WSO2CARBON_DB</cacheId>
-    </remoteInstance-->
-
-    <!-- This defines the JDBC based remote registry instance configuration  -->
-
-    <!--remoteInstance url="https://localhost:9443/registry">
-        <id>instanceid</id>
-        <dbConfig>wso2registry</dbConfig>
-        <readOnly>false</readOnly>
-        <enableCache>true</enableCache>
-        <registryRoot>/</registryRoot>
-    </remoteInstance-->
-
-    <!-- This defines the mount configuration to be used with the remote instance and the target path for the mount -->
-
-    <!--mount path="/_system/config" overwrite="true|false|virtual">
-        <instanceId>instanceid</instanceId>
-        <targetPath>/_system/nodes</targetPath>
-    </mount-->
+	<%- if @clustering -%>
+		<dbConfig name="govregistry">
+		<dataSource>jdbc/WSO2REG_DB</dataSource>
+		</dbConfig>
+		
+		<remoteInstance url="https://publisher.apim-wso2.com">
+		 <id>gov</id>
+   		 <cacheId>user@jdbc:mysql://regdb.mysql-wso2.com:3306/regdb</cacheId>
+   		 <dbConfig>govregistry</dbConfig>
+		 <readOnly>false</readOnly>
+		 <enableCache>true</enableCache>
+         <registryRoot>/</registryRoot>
+        </remoteInstance>
+		
+		<mount path="/_system/governance" overwrite="true">
+          <instanceId>gov</instanceId>
+          <targetPath>/_system/governance</targetPath>
+       </mount>
+	  <mount path="/_system/config" overwrite="true">
+        <instanceId>gov</instanceId>
+        <targetPath>/_system/config</targetPath>
+       </mount>
+	<%- end -%>
 
     <!-- This defines index configuration which is used in meta data search feature of the registry -->
     <indexingConfiguration>
@@ -269,40 +266,7 @@
         </exclusions>
     </indexingConfiguration>
 
-    <dbConfig name="config">
-      <dataSource>jdbc/<%= @config_db %></dataSource>
-    </dbConfig>
 
-    <remoteInstance url="https://registryernance.wso2.com">
-      <id>config</id>
-      <dbConfig>config</dbConfig>
-      <readOnly>false</readOnly>
-      <registryRoot>/</registryRoot>
-      <enableCache>true</enableCache>
-    </remoteInstance>
-
-    <mount path="/_system/config" overwrite="true">
-      <instanceId>config</instanceId>
-      <targetPath>/_system/<%= @config_db %></targetPath>
-    </mount>
-
-    <dbConfig name="governance">
-      <dataSource>jdbc/governance</dataSource>
-    </dbConfig>
-
-    <%- database = @registry_database -%>
-    <remoteInstance url="https://registryernance.wso2.com">
-      <id>governance</id>
-      <dbConfig>governance</dbConfig>
-      <readOnly>false</readOnly>
-      <registryRoot>/</registryRoot>
-      <enableCache>true</enableCache>
-    </remoteInstance>
-
-    <mount path="/_system/governance" overwrite="true">
-      <instanceId>governance</instanceId>
-      <targetPath>/_system/governance</targetPath>
-    </mount>
 
 
     <!-- This static configuration is suppose to be modified before any data being loaded to the registry (i.e.: before the first startup) -->

@@ -1,2 +1,8 @@
 ---
 mysql_server: "%{mysql_port_3306_tcp_addr}"
+mysql_port: "%{mysql_port_3306_tcp_port}"
+keymanager_subdomain: "%{keymanager_subdomain}"
+gateway_subdomain: "%{gateway_subdomain}"
+am_subdomain: "%{am_subdomain}"
+domain: "%{domain}"
+apimgt.local.member : "%{apimgt.local.member}"
