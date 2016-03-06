@@ -658,7 +658,7 @@
          The clustering domain/group. Nodes in the same group will belong to the same multicast
          domain. There will not be interference between nodes in different groups.
         -->
-        <parameter name="domain">wso2.<%= @amtype %>.domain</parameter>
+        <parameter name="domain"><%= @clusterDomainName %></parameter>
 
         <!-- The multicast address to be used -->
         <!--<parameter name="mcastAddress">228.0.0.4</parameter>-->
@@ -679,7 +679,7 @@
         -->
         <!-- The host name or IP address of this member -->
 
-        <parameter name="localMemberHost"><%= @apimgt.local.member %></parameter>
+        <parameter name="localMemberHost"><%= @local_member_host %></parameter>
 
         <!--
             The bind adress of this member. The difference between localMemberHost & localMemberBindAddress
@@ -694,7 +694,7 @@
         The TCP port used by this member. This is the port through which other nodes will
         contact this member
          -->
-        <parameter name="localMemberPort"><%= @localmember_port %></parameter>
+        <parameter name="localMemberPort"><%= @local_member_port %></parameter>
 
         <!--
             The bind port of this member. The difference between localMemberPort & localMemberBindPort
@@ -709,8 +709,8 @@
         Properties specific to this member
         -->
         <parameter name="properties">
-            <property name="backendServerURL" value="https://${hostName}:${httpsPort}/services/"/>
-            <property name="mgtConsoleURL" value="https://${hostName}:${httpsPort}/"/>
+            <property name="backendServerURL" value="https://"<%= @local_member_host %>:9443/services/"/>
+            <property name="mgtConsoleURL" value="https://"<%= @local_member_host %>:9443/"/>
             <property name="subDomain" value="<%= @sub_cluster_domain %>"/>
         </parameter>
 
@@ -722,14 +722,14 @@
         <%- if @members -%>
         <%- @members.keys.sort.each do |hostname| -%>
             <member>
-                <hostName><%= hostname %></hostName>
-                <port><%= @members[hostname] %></port>
+                <hostName><%= @member1_host %></hostName>
+                <port><%= @member1_port %></port>
             </member>
         <%- end -%>
         <%- else -%>
           <member>
-                <hostName>127.0.0.1</hostName>
-                <port>4000</port>
+                <hostName><%= @member2_host %></hostName>
+                <port><%= @member2_port %></port>
             </member>
         <%- end -%>
         </members>

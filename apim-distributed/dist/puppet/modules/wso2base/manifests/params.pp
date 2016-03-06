@@ -21,7 +21,7 @@ class wso2base::params {
   $java_home = hiera('java_home', '/opt/java')
   $packages = hiera('packages', 'unzip')
 
-  $domain = hiera('domain', 'example.com')
+  $domain = hiera('domain', 'verizon.am.domain')
 
   # Service subdomains
   $af_subdomain = hiera('af_subdomain', 'apps')
@@ -50,6 +50,8 @@ class wso2base::params {
   $admin_username = hiera('admin_username', 'admin')
   $admin_password = hiera('admin_password', 'admin')
   $admin_password_enc = hiera('admin_password_enc', '')
+  $local_member_host = hiera('local_member_host','')
+  $local_member_port = hiera('local_member_port',4000)
 
   $svn_user = 'wso2'
   $svn_password = hiera('svn_password', 'wso2')
@@ -90,5 +92,11 @@ class wso2base::params {
     'password_enc' => ""
   }
   )
+  
+  $member1_host = hiera(member1_host,127.0.0.1)
+  $member1_port = hiera(member1_port,4000)
+  $member2_host = hiera(member2_host,127.0.0.1)
+  $member2_port = hiera(member2_port,4000)
+  $mgt_host_name = hiera(mgt_host_name,'')
 
 }

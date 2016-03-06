@@ -34,4 +34,5 @@ class apimanager::params inherits wso2base::params {
     'password_enc' => ""
   }
   )
+
 }

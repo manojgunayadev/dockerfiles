@@ -22,7 +22,6 @@ class apimanager::keymanager (
   $clustering         = true,
   $sub_cluster_domain = "mgt",
   $maintenance_mode   = 'refresh',
-  $localmember_port   = '4000',
   $config_db          = 'dbApimConfig',
   $depsync            = false,
   $cloud              = false,
