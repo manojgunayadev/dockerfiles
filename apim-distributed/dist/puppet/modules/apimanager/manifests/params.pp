@@ -15,10 +15,10 @@
 #----------------------------------------------------------------------------
 
 class apimanager::params inherits wso2base::params {
-  $apimgt.local.member = hiera('apimgt.local.member','127.0.0.1')
   # API Mgt databases
   $apimgt_database = hiera('apimgt_database', {
     'hostname'     => "$wso2base::params::mysql_server",
+    'port'         => "$wso2base::params::mysql_port", 
     'database'     => 'dbApiMgt',
     'username'     => 'ApiMgtUser',
     'password'     => 'ApiMgtUserPass',
@@ -28,6 +28,7 @@ class apimanager::params inherits wso2base::params {
 
   $apistats_database = hiera('apistats_database', {
     'hostname'     => "$wso2base::params::mysql_server",
+    'port'         => "$wso2base::params::mysql_port",     
     'database'     => 'dbApiStatus',
     'username'     => 'ApiStatuUser',
     'password'     => 'ApiStatuUserPass',

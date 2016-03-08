@@ -36,7 +36,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://<%= @userstore_database['hostname'] %>:3306/<%= @userstore_database['database'] %>?autoReconnect=true</url>
+                    <url>jdbc:mysql://<%= @userstore_database['hostname'] %>:<%= @userstore_database['port'] %>/<%= @userstore_database['database'] %>?autoReconnect=true</url>
                     <username><%= @userstore_database['username'] %></username>
                     <%- if @securevault -%>
                     <password svns:secretAlias="Datasources.WSO2_USERSTORE_DB.Configuration.Password">password</password>
@@ -62,7 +62,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://<%= @registry_database['hostname'] %>:3306/<%= @registry_database['database'] %>?autoReconnect=true</url>
+                    <url>jdbc:mysql://<%= @registry_database['hostname'] %>:<%= @registry_database['port'] %>/<%= @registry_database['database'] %>?autoReconnect=true</url>
                     <username><%= @registry_database['username'] %></username>
                     <%- if @securevault -%>
                     <password svns:secretAlias="Datasources.WSO2_GOVERNANCE_DB.Configuration.Password">password</password>

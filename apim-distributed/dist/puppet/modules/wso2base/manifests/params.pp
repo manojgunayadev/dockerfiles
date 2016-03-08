@@ -21,7 +21,8 @@ class wso2base::params {
   $java_home = hiera('java_home', '/opt/java')
   $packages = hiera('packages', 'unzip')
 
-  $domain = hiera('domain', 'verizon.am.domain')
+  $domain = hiera('domain', 'marathon.slave.mesos.')
+  $domain = hiera('sub_cluster_domain', '')
 
   # Service subdomains
   $af_subdomain = hiera('af_subdomain', 'apps')
@@ -39,7 +40,7 @@ class wso2base::params {
   $bps_subdomain = hiera('bps_subdomain', 'process')
   $brs_subdomain = hiera('brs_subdomain', 'brs')
   $gateway_subdomain = hiera('gateway_subdomain', 'gateway')
-  $gatewaymgt_subdomain = hiera('gatewaymgt_subdomain', 'gateway')
+  $gatewaymgt_subdomain = hiera('gatewaymgt_subdomain', 'mgtgateway')
   $keymanager_subdomain = hiera('keymanager_subdomain', 'keymanager')
   $governance_subdomain = hiera('governance_subdomain', 'greg')
   $analyzer_subdomain = hiera('analyzer_subdomain', 'analyzer')
@@ -68,6 +69,7 @@ class wso2base::params {
   # Database details
   $config_database = hiera('config_database', {
     'hostname'     => "$mysql_server",
+    'port'         => "$mysql_port",   
     'database'     => 'dbApimConfig',
     'username'     => 'ConfigDBUser',
     'password'     => 'ConfigDBUserPass',
@@ -77,6 +79,7 @@ class wso2base::params {
 
   $userstore_database = hiera('userstore_database', {
     'hostname'     => "$mysql_server",
+    'port'         => "$mysql_port",
     'database'     => 'dbUserstore',
     'username'     => 'UserstoreUser',
     'password'     => 'UserstoreUserPass',
@@ -86,6 +89,7 @@ class wso2base::params {
 
   $registry_database = hiera('registry_database', {
     'hostname'     => "$mysql_server",
+    'port'         => "$mysql_port",    
     'database'     => 'dbGovernance',
     'username'     => 'GovernanceUser',
     'password'     => 'GovernanceUserPass',

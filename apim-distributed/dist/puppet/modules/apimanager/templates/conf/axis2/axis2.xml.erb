@@ -658,7 +658,7 @@
          The clustering domain/group. Nodes in the same group will belong to the same multicast
          domain. There will not be interference between nodes in different groups.
         -->
-        <parameter name="domain"><%= @clusterDomainName %></parameter>
+        <parameter name="domain"><%= @domain %></parameter>
 
         <!-- The multicast address to be used -->
         <!--<parameter name="mcastAddress">228.0.0.4</parameter>-->
@@ -709,8 +709,8 @@
         Properties specific to this member
         -->
         <parameter name="properties">
-            <property name="backendServerURL" value="https://"<%= @local_member_host %>:9443/services/"/>
-            <property name="mgtConsoleURL" value="https://"<%= @local_member_host %>:9443/"/>
+            <property name="backendServerURL" value="https://${hostName}:${httpsPort}/services/"/>
+            <property name="mgtConsoleURL" value="https://${hostName}:${httpsPort}/"/>
             <property name="subDomain" value="<%= @sub_cluster_domain %>"/>
         </parameter>
 
@@ -719,19 +719,14 @@
            "membershipScheme" above is set to "wka"
         -->
         <members>
-        <%- if @members -%>
-        <%- @members.keys.sort.each do |hostname| -%>
             <member>
                 <hostName><%= @member1_host %></hostName>
                 <port><%= @member1_port %></port>
             </member>
-        <%- end -%>
-        <%- else -%>
           <member>
                 <hostName><%= @member2_host %></hostName>
                 <port><%= @member2_port %></port>
             </member>
-        <%- end -%>
         </members>
 
         <!--
