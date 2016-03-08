@@ -15,7 +15,6 @@
 #----------------------------------------------------------------------------
 
 class apimanager::params inherits wso2base::params {
-  # API Mgt databases
   $apimgt_database = hiera('apimgt_database', {
     'hostname'     => "$wso2base::params::mysql_server",
     'port'         => "$wso2base::params::mysql_port", 
