@@ -39,7 +39,7 @@
             </AdminUser>
             <EveryOneRoleName>everyone</EveryOneRoleName> <!-- By default users in this role sees the registry root -->
             <Property name="isCascadeDeleteEnabled">true</Property>
-            <%-if @amtype == 'gateway')  -%>
+            <%-if (@amtype == 'gateway')  -%>
                  <Property name="dataSource">jdbc/WSO2CARBON_DB</Property>
             <%- else -%>  
                  <Property name="dataSource">jdbc/WSO2UM_DB</Property>

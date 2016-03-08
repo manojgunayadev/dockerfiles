@@ -103,7 +103,7 @@
             </definition>
         </datasource>
       <%- end -%>     
-       <%-if @amtype == 'publisher') || @amtype == 'store')  -%>
+       <%-if (@amtype == 'publisher' || @amtype == 'store')  -%>
         <datasource>
             <name>WSO2REG_DB</name>
             <description>The datasource used by the registry</description>
@@ -128,6 +128,7 @@
                 </configuration>
             </definition>
         </datasource>
+         <%- end -%>   
        </datasources>
 </datasources-configuration>
 

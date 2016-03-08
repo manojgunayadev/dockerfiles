@@ -22,7 +22,7 @@ class wso2base::params {
   $packages = hiera('packages', 'unzip')
 
   $domain = hiera('domain', 'marathon.slave.mesos.')
-  $domain = hiera('sub_cluster_domain', '')
+  $sub_cluster_domain = hiera('sub_cluster_domain', '')
 
   # Service subdomains
   $af_subdomain = hiera('af_subdomain', 'apps')
@@ -97,10 +97,10 @@ class wso2base::params {
   }
   )
   
-  $member1_host = hiera(member1_host,127.0.0.1)
-  $member1_port = hiera(member1_port,4000)
-  $member2_host = hiera(member2_host,127.0.0.1)
-  $member2_port = hiera(member2_port,4000)
-  $mgt_host_name = hiera(mgt_host_name,'')
+  $member1_host = hiera('member1_host','127.0.0.1')
+  $member1_port = hiera('member1_port','4000')
+  $member2_host = hiera('member2_host','127.0.0.1')
+  $member2_port = hiera('member2_port','4000')
+  $mgt_host_name = hiera('mgt_host_name','')
 
 }
