@@ -16,11 +16,10 @@
 
 class apimanager::gateway (
   $version            = '1.10.0',
-  $offset             = 0,
-  $services           = undef,
-  $members            = {'apimgw1.marathon.slave.mesos.' => 4000,''apimgw2.marathon.slave.mesos.' => 4000'},
-  $clustering         = true,
-  $sub_cluster_domain = "mgt",
+  $offset             = '0',
+  $services           = 'undef',
+  $clustering         = 'true',
+  $sub_cluster_domain = 'mgt',
   $maintenance_mode   = 'refresh',
   $config_db          = 'dbApimConfig',
   $depsync            = false,

@@ -20,9 +20,8 @@ class wso2base::params {
   $local_package_dir = hiera('local_package_dir', '/mnt/packs')
   $java_home = hiera('java_home', '/opt/java')
   $packages = hiera('packages', 'unzip')
-
-  $domain = hiera('domain', 'marathon.slave.mesos.')
-  $sub_cluster_domain = hiera('sub_cluster_domain', '')
+  $domain_name = hiera('domain_name', 'marathon.slave.mesos.')
+  $clusterdomain = 'apim.verizon.com'
 
   # Service subdomains
   $af_subdomain = hiera('af_subdomain', 'apps')
@@ -65,6 +64,7 @@ class wso2base::params {
   $keystore_password_enc = hiera('truststore_password_enc', '')
 
   $mysql_server = hiera('mysql_server', "mysql.%{domain}")
+  $mysql_port = hiera('mysql_port', "mysql.%{domain}")
 
   # Database details
   $config_database = hiera('config_database', {
