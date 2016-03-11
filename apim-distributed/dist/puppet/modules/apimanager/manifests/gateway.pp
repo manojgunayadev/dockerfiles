@@ -125,8 +125,7 @@ class apimanager::gateway (
       Initialize[$deployment_code],
       Deploy[$deployment_code],
       Push_templates[$service_templates],
-      File["${carbon_home}/bin/wso2server.sh"],
-      File["/etc/init.d/wso2${amtype}"],
+      File["${carbon_home}/bin/wso2server.sh"]
       ],
   }
 }
