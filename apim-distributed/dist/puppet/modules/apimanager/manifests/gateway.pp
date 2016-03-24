@@ -19,7 +19,6 @@ class apimanager::gateway (
   $offset             = '0',
   $services           = 'undef',
   $clustering         = 'true',
-  $sub_cluster_domain = 'mgt',
   $maintenance_mode   = 'refresh',
   $config_db          = 'dbApimConfig',
   $depsync            = false,
@@ -125,7 +124,8 @@ class apimanager::gateway (
       Initialize[$deployment_code],
       Deploy[$deployment_code],
       Push_templates[$service_templates],
-      File["${carbon_home}/bin/wso2server.sh"]
+      File["${carbon_home}/bin/wso2server.sh"],
+      File["/etc/init.d/wso2${amtype}"],
       ],
   }
 }

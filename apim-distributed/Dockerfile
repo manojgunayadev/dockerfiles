@@ -76,5 +76,4 @@ EXPOSE 9443 9763 8283 8243 4000
 
 # Run puppet and tail the carbon log file
 # Tailing the log file is required otherwise docker instance will get killed after running puppet apply
-CMD /bin/bash -c 'puppet apply --modulepath=/etc/puppet/modules/ -e "include $APIM_NODE" && tailf /mnt/*/wso2am-1.10.0/repository/logs/wso2carbon.log'
-
+RUN puppet apply --modulepath=/etc/puppet/modules/ -e "include $APIM_NODE" && tailf /mnt/*/wso2am-1.10.0/repository/logs/wso2carbon.log

@@ -11,7 +11,7 @@
     <!-- This defines the default database and its configuration of the registry -->
 
     <dbConfig name="wso2registry">
-        <dataSource>jdbc/WSO2CarbonDB</dataSource>
+        <dataSource>jdbc/WSO2CARBON_DB</dataSource>
     </dbConfig>
 
     <!-- This handler provides the feature to add a simlink to a given resource -->
@@ -204,12 +204,12 @@
         <cacheId>wso2carbon@jdbc:h2:repository/database/WSO2CARBON_DB</cacheId>
     </remoteInstance-->
 
-	<%- if @clustering -%>
+	<%- if ((@clustering) && (@amtype == 'publisher' || @amtype == 'store'))  -%>
 		<dbConfig name="govregistry">
 		<dataSource>jdbc/WSO2REG_DB</dataSource>
 		</dbConfig>
 		
-		<remoteInstance url="https://publisher.apim-wso2.com">
+		 <remoteInstance url="https://<%= @pubstore_subdomain %>.<%= @am_subdomain %>.<%= @domain_name %>>
 		 <id>gov</id>
    		 <cacheId>user@jdbc:mysql://regdb.mysql-wso2.com:3306/regdb</cacheId>
    		 <dbConfig>govregistry</dbConfig>

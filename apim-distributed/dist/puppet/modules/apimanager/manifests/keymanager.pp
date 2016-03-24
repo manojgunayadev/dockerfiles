@@ -20,7 +20,6 @@ class apimanager::keymanager (
   $services           = undef,
   $members            = undef,
   $clustering         = true,
-  $sub_cluster_domain = "mgt",
   $maintenance_mode   = 'refresh',
   $config_db          = 'dbApimConfig',
   $depsync            = false,

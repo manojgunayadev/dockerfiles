@@ -7,11 +7,11 @@
             <name>WSO2_CONFIG_DB</name>
             <description>The datasource used for config registry</description>
             <jndiConfig>
-                <name>jdbc/WSO2CarbonDB</name>
+                <name>jdbc/WSO2CARBON_DB</name>
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://<%= @config_database['hostname'] %>:<%= @config_database['port'] %>/<%= @config_database['database'] %>?autoReconnect=true</url>
+                    <url>jdbc:mysql://<%= @config_database['hostname'] %>:<%= @config_database['port'] %>/<%= @config_database['database'] %></url>
                     <username><%= @config_database['username'] %></username>
                     <%- if @securevault -%>
                     <password svns:secretAlias="Datasources.WSO2_CONFIG_DB.Configuration.Password">password</password>
@@ -27,6 +27,8 @@
                 </configuration>
             </definition>
         </datasource>
+
+        <%- if @amtype != 'gateway' -%>
         <datasource>
             <name>WSO2AM_DB</name>
             <description>The datasource used for API Manager database</description>
@@ -76,8 +78,7 @@
             </configuration>
           </definition>
         </datasource>
-        
-     <%- if @amtype != 'gateway' -%>
+       
         <datasource>
             <name>WSO2UM_DB</name>
             <description>The datasource used by user manager</description>
@@ -102,7 +103,8 @@
                 </configuration>
             </definition>
         </datasource>
-      <%- end -%>     
+      <%- end -%>
+           
        <%-if (@amtype == 'publisher' || @amtype == 'store')  -%>
         <datasource>
             <name>WSO2REG_DB</name>

@@ -20,8 +20,10 @@ class wso2base::params {
   $local_package_dir = hiera('local_package_dir', '/mnt/packs')
   $java_home = hiera('java_home', '/opt/java')
   $packages = hiera('packages', 'unzip')
-  $domain_name = hiera('domain_name', 'marathon.slave.mesos.')
+  $domain_name = hiera('domain_name', 'verizon.com')
   $clusterdomain = 'apim.verizon.com'
+  $sub_cluster_domain = hiera('sub_cluster_domain', '')
+  $profile_name = hiera('profile_name','')
 
   # Service subdomains
   $af_subdomain = hiera('af_subdomain', 'apps')
@@ -38,9 +40,9 @@ class wso2base::params {
   $publisher_subdomain = hiera('publisher_subdomain', 'publisher')
   $bps_subdomain = hiera('bps_subdomain', 'process')
   $brs_subdomain = hiera('brs_subdomain', 'brs')
-  $gateway_subdomain = hiera('gateway_subdomain', 'gateway')
-  $gatewaymgt_subdomain = hiera('gatewaymgt_subdomain', 'mgtgateway')
-  $keymanager_subdomain = hiera('keymanager_subdomain', 'keymanager')
+  $gateway_subdomain = hiera('gateway_subdomain', 'gw')
+  $gatewaymgt_subdomain = hiera('gatewaymgt_subdomain', 'mgtgw')
+  $keymanager_subdomain = hiera('keymanager_subdomain', 'km')
   $governance_subdomain = hiera('governance_subdomain', 'greg')
   $analyzer_subdomain = hiera('analyzer_subdomain', 'analyzer')
   $esb_subdomain = hiera('esb_subdomain', 'esb')
