@@ -23,7 +23,13 @@ PRODUCT_CODE="<%= @amtype %>"
 CARBON_HOME="<%= @carbon_home %>"
 LOCK_FILE="${CARBON_HOME}/wso2carbon.lck"
 PID_FILE="${CARBON_HOME}/wso2carbon.pid"
-CMD="${CARBON_HOME}/bin/wso2server.sh -Dprofile=<%= @profile_name %>"
+
+ <%- if @profile_name == '' -%>
+    CMD="${CARBON_HOME}/bin/wso2server.sh" 
+ <%- else -%>
+ 	CMD="${CARBON_HOME}/bin/wso2server.sh -Dprofile=<%= @profile_name %>"
+ <%- end -%>
+
 
 #Get the status details of idenetity service
 status() {
