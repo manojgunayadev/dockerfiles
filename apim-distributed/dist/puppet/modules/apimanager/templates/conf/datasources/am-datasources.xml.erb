@@ -28,7 +28,6 @@
             </definition>
         </datasource>
 
-        <%- if @amtype != 'gateway' -%>
         <datasource>
             <name>WSO2AM_DB</name>
             <description>The datasource used for API Manager database</description>
@@ -103,7 +102,6 @@
                 </configuration>
             </definition>
         </datasource>
-      <%- end -%>
            
        <%-if (@amtype == 'publisher' || @amtype == 'store')  -%>
         <datasource>
