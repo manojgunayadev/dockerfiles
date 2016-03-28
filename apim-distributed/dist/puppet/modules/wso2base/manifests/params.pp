@@ -55,8 +55,8 @@ class wso2base::params {
   $local_member_host = hiera('local_member_host','')
   $local_member_port = hiera('local_member_port',4000)
 
-  $svn_user = 'wso2'
-  $svn_password = hiera('svn_password', 'wso2')
+  $svn_user = hiera('svn_user', '')
+  $svn_password = hiera('svn_password', '')
 
   $carbondb_password = hiera('carbondb_password', 'wso2carbon')
   $carbondb_password_enc = hiera('carbondb_password_enc', '')
