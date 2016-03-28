@@ -593,7 +593,7 @@
           <SvnUrl><%= @depsync_svn_repo %>/api-gateway</SvnUrl>
           <SvnUser><%= @svn_user %></SvnUser>
           <SvnPassword><%= @svn_password %></SvnPassword>
-          <SvnUrlAppendTenantId>true</SvnUrlAppendTenantId>
+          <SvnUrlAppendTenantId>false</SvnUrlAppendTenantId>
       <%- elsif @amtype == 'pubstore' -%>
           <Enabled>true</Enabled>
           <AutoCommit>true</AutoCommit>
@@ -602,7 +602,7 @@
           <SvnUrl><%= @depsync_svn_repo %>/api-pubstore</SvnUrl>
           <SvnUser><%= @svn_user %></SvnUser>
           <SvnPassword><%= @svn_password %></SvnPassword>
-          <SvnUrlAppendTenantId>true</SvnUrlAppendTenantId>
+          <SvnUrlAppendTenantId>false</SvnUrlAppendTenantId>
       <%- elsif @amtype == 'keymanager' -%>
           <Enabled>true</Enabled>
           <AutoCommit>true</AutoCommit>
@@ -611,7 +611,7 @@
           <SvnUrl><%= @depsync_svn_repo %>/api-keymanager</SvnUrl>
           <SvnUser><%= @svn_user %></SvnUser>
           <SvnPassword><%= @svn_password %></SvnPassword>
-          <SvnUrlAppendTenantId>true</SvnUrlAppendTenantId>
+          <SvnUrlAppendTenantId>false</SvnUrlAppendTenantId>
       <%- end -%>
       <%- else -%>
           <Enabled>false</Enabled>
