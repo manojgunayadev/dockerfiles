@@ -722,12 +722,14 @@
                 <hostName><%= @member1_host %></hostName>
                 <port><%= @member1_port %></port>
             </member>
+           
+          <%-if (@member2_host != '')   
           <member>
                 <hostName><%= @member2_host %></hostName>
                 <port><%= @member2_port %></port>
             </member>
         </members>
-
+       <%- end -%> 
         <!--
         Enable the groupManagement entry if you need to run this node as a cluster manager.
         Multiple application domains with different GroupManagementAgent implementations
