@@ -73,7 +73,7 @@ ENV APIM_NODE apimanager
 
 WORKDIR /root
 
-EXPOSE 9443 9763 8283 8243 4000 
+EXPOSE 10397 8280 8243 9763 9443 
 
 # Run puppet and tail the carbon log file
 # Tailing the log file is required otherwise docker instance will get killed after running puppet apply

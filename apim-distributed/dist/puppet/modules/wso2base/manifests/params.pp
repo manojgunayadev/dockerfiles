@@ -53,7 +53,7 @@ class wso2base::params {
   $admin_password = hiera('admin_password', 'admin')
   $admin_password_enc = hiera('admin_password_enc', '')
   $local_member_host = hiera('local_member_host','')
-  $local_member_port = hiera('local_member_port',4000)
+  $local_member_port = hiera('local_member_port','')
   $mesos_host = hiera('mesos_host','127.0.0.1')
   $mesos_appid = hiera(mesos_appid,'')
   $mesos_apps = hiera(mesos_apps,'')

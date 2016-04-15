@@ -667,7 +667,7 @@
         -->
         <!-- The host name or IP address of this member -->
 
-        <parameter name="localMemberHost"></parameter>
+        <parameter name="localMemberHost"><%= @local_member_host %></parameter>
 
         <!--
             The bind adress of this member. The difference between localMemberHost & localMemberBindAddress
@@ -682,7 +682,7 @@
         The TCP port used by this member. This is the port through which other nodes will
         contact this member
          -->
-        <parameter name="localMemberPort"></parameter>
+        <parameter name="localMemberPort"><%= @local_member_port %></parameter>
 
         <!--
             The bind port of this member. The difference between localMemberPort & localMemberBindPort
