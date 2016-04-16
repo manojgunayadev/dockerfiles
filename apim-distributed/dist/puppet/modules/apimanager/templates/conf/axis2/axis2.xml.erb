@@ -737,7 +737,10 @@
         
        <parameter name="MARATHON_ENDPOINT">http://"<%= @mesos_host %>":8080</parameter>
        <parameter name="MARATHON_APP_ID">"<%= @mesos_appid %>"</parameter>
+      
+      <%-if (@mesos_apps != '')  -%>
        <parameter name="MARATHON_APPLICATIONS">"<%= @mesos_apps %>"</parameter>
+      <%- end -%>   
       
     </clustering>
     
