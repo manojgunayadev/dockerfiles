@@ -67,7 +67,6 @@ class is (
     'conf/carbon.xml',
     'conf/registry.xml',
     'conf/axis2/axis2.xml',
-    'conf/datasources/master-datasources.xml',
     'conf/identity/identity.xml'
     ]
 
