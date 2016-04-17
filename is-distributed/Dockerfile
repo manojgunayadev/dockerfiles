@@ -55,7 +55,7 @@ RUN ln -s /opt/jdk1.8.0_73 /opt/java && rm -rf /opt/jdk-8u73-linux-x64.tar.gz
 RUN mkdir -p /mnt/packs /etc/puppet/hieradata
 
 # Copy WSO2 product zip into /mnt/packs
-ADD dist/wso2am-1.10.0.zip /mnt/packs/
+ADD dist/wso2is-5.1.0.zip /mnt/packs/
 # eg :-
 # ADD dist/<WSO2 product zip> /mnt/packs/
 
@@ -67,8 +67,7 @@ ADD dist/env.rb /usr/lib/ruby/vendor_ruby/facter/
 ENV HOME /root
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/java/bin
 ENV JAVA_HOME /opt/java
-ENV FACTER_fqdn apimanager
-ENV APIM_NODE apimanager
+
 
 WORKDIR /root
 
@@ -76,4 +75,4 @@ EXPOSE 10397 8280 8243 9763 9443
 
 # Run puppet and tail the carbon log file
 # Tailing the log file is required otherwise docker instance will get killed after running puppet apply
-CMD /bin/bash -c 'puppet apply --modulepath=/etc/puppet/modules/ -e "include $APIM_NODE" && tailf /mnt/*/wso2am-1.10.0/repository/logs/wso2carbon.log'
+CMD /bin/bash -c 'puppet apply --modulepath=/etc/puppet/modules/ -e "include is" && tailf /mnt/*/wso2is-5.1.0/repository/logs/wso2carbon.log'
