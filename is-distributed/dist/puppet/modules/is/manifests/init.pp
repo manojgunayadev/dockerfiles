@@ -97,7 +97,6 @@ class is (
     owner    => $owner,
     group    => $group,
     target   => $carbon_home,
-    amtype   => $amtype,
     require  => Initialize[$deployment_code],
   }
 
