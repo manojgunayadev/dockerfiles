@@ -66,8 +66,7 @@ class is (
     'conf/api-manager.xml',
     'conf/carbon.xml',
     'conf/registry.xml',
-    'conf/axis2/axis2.xml',
-    'conf/identity/identity.xml'
+    'conf/axis2/axis2.xml'
     ]
 
   $common_templates = ['conf/user-mgt.xml', 'conf/datasources/master-datasources.xml', 'conf/tomcat/catalina-server.xml',]

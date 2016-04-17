@@ -4,22 +4,22 @@
     </providers>
     <datasources>
         <datasource>
-            <name>WSO2_CARBON_DB</name>
-            <description>The datasource used for registry and user manager</description>
+            <name>WSO2_CONFIG_DB</name>
+            <description>The datasource used for config registry</description>
             <jndiConfig>
-                <name>jdbc/WSO2CarbonDB</name>
+                <name>jdbc/WSO2CARBON_DB</name>
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:h2:<%= @carbon_home %>/repository/database/WSO2CARBON_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000;MVCC=true</url>
-                    <username>wso2carbon</username>
+                    <url>jdbc:mysql://<%= @config_database['hostname'] %>:<%= @config_database['port'] %>/<%= @config_database['database'] %></url>
+                    <username><%= @config_database['username'] %></username>
                     <%- if @securevault -%>
-                    <password svns:secretAlias="Datasources.WSO2_CARBON_DB.Configuration.Password">password</password>
+                    <password svns:secretAlias="Datasources.WSO2_CONFIG_DB.Configuration.Password">password</password>
                     <%- else -%>
-                    <password>wso2carbon</password>
+                    <password><%= @config_database['password'] %></password>
                     <%- end -%>
-                    <driverClassName>org.h2.Driver</driverClassName>
-                    <maxActive>150</maxActive>
+                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <maxActive>200</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
@@ -29,10 +29,35 @@
         </datasource>
 
         <datasource>
-            <name>WSO2_USERSTORE_DB</name>
-            <description>The datasource used for user manager</description>
+            <name>WSO2AM_DB</name>
+            <description>The datasource used for API Manager database</description>
             <jndiConfig>
-                <name>jdbc/userstore</name>
+                <name>jdbc/WSO2AM_DB</name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    <url>jdbc:mysql://<%= @apimgt_database['hostname'] %>:<%= @apimgt_database['port'] %>/<%= @apimgt_database['database'] %>?autoReconnect=true</url>
+                    <username><%= @apimgt_database['username'] %></username>
+                    <%- if @securevault -%>
+                    <password svns:secretAlias="Datasources.WSO2_APIMGT_DB.Configuration.Password">password</password>
+                    <%- else -%>
+                    <password><%= @apimgt_database['password'] %></password>
+                    <%- end -%>
+                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <maxActive>50</maxActive>
+                    <maxWait>60000</maxWait>
+                    <testOnBorrow>true</testOnBorrow>
+                    <validationQuery>SELECT 1</validationQuery>
+                    <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+        </datasource>        
+       
+        <datasource>
+            <name>WSO2UM_DB</name>
+            <description>The datasource used by user manager</description>
+            <jndiConfig>
+                <name>jdbc/WSO2UM_DB</name>
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
@@ -44,21 +69,19 @@
                     <password><%= @userstore_database['password'] %></password>
                     <%- end -%>
                     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
-                    <maxActive>150</maxActive>
+                    <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
                     <validationInterval>30000</validationInterval>
-                    <Property name="minIdle">5</Property>
                 </configuration>
             </definition>
         </datasource>
-
         <datasource>
-            <name>WSO2_REGISTRY_DB</name>
-            <description>The datasource used for registry</description>
+            <name>WSO2REG_DB</name>
+            <description>The datasource used by the registry</description>
             <jndiConfig>
-                <name>jdbc/governance</name>
+                <name>jdbc/WSO2REG_DB</name>
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
@@ -70,18 +93,14 @@
                     <password><%= @registry_database['password'] %></password>
                     <%- end -%>
                     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
-                    <maxActive>150</maxActive>
+                    <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
                     <validationInterval>30000</validationInterval>
-                    <useDisposableConnectionFacade>true</useDisposableConnectionFacade>
-                    <minIdle>50</minIdle>
-                    <removeAbandoned>true</removeAbandoned>
-                    <logAbandoned>true</logAbandoned>
-                    <removeAbandonedTimeout>60</removeAbandonedTimeout>
                 </configuration>
             </definition>
         </datasource>
-    </datasources>
+       </datasources>
 </datasources-configuration>
+
