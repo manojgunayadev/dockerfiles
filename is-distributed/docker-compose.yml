@@ -1,0 +1,64 @@
+apim-node1:
+    container_name: apim-node1 
+    image: apim
+    environment:
+        - FACTER_fqdn=apimanager
+        - APIM_NODE=apimanager
+    links:
+        - mysql
+
+apim-gateway:
+    container_name: apim-gateway
+    image: apim
+    environment:
+        - FACTER_fqdn=apimanager
+        - APIM_NODE=apimanager::gateway
+    links:
+        - mysql
+
+apim-pubstore:
+    container_name: apim-pubstore
+    image: apim
+    environment:
+        - FACTER_fqdn=apimanager
+        - APIM_NODE=apimanager::pubstore
+    links:
+        - mysql
+
+apim-keymanager:
+    container_name: apim-keymanager
+    image: apim
+    environment:
+        - FACTER_fqdn=apimanager
+        - APIM_NODE=apimanager::keymanager
+    links:
+        - mysql
+
+mysql-client:
+    container_name: mysql-client
+    image: mysql:5.6.27
+    volumes:
+        - ./dist/database:/dbscripts
+    command: sh -c /dbscripts/create_mysql_dbs.sh
+    links:
+        - mysql
+mysql:
+    container_name: mysql
+    image: mysql:5.6.27
+    environment:
+        - MYSQL_ROOT_PASSWORD=password
+
+postgresql-client:
+    container_name: postgresql-client
+    image: postgres:9.4
+    volumes:
+        - ./dist/database:/dbscripts
+    command: sh -c /dbscripts/create_postgre_dbs.sh
+    links:
+        - postgresql
+
+postgresql:
+    container_name: postgresql
+    image: postgres:9.4
+    environment:
+        - POSTGRES_PASSWORD=password

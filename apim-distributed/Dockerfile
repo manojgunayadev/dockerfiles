@@ -62,7 +62,6 @@ ADD dist/wso2am-1.10.0.zip /mnt/packs/
 # Copy puppet related file to docker
 ADD dist/puppet /etc/puppet/
 ADD dist/env.rb /usr/lib/ruby/vendor_ruby/facter/
-ADD scripts/wso2init.sh /mnt/packs
 
 # Set environment variables
 ENV HOME /root
