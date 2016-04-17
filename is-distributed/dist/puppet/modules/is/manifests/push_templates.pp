@@ -14,7 +14,7 @@
 #  limitations under the License.
 #----------------------------------------------------------------------------
 
-define apimanager::push_templates ($directory, $target, $owner, $group) {
+define is::push_templates ($directory, $target, $owner, $group) {
   file { "${target}/repository/${name}":
     ensure  => present,
     owner   => $owner,
