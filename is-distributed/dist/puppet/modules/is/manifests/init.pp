@@ -65,7 +65,7 @@ class is (
   $service_templates = [
     'conf/api-manager.xml',
     'conf/registry.xml',
-     conf/identity/identity.xml,
+    'conf/identity/identity.xml',
     'conf/user-mgt.xml'
     ]
 
