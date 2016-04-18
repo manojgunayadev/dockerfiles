@@ -41,6 +41,10 @@ class apimanager::gateway (
     'conf/axis2/axis2.xml',
     'conf/datasources/am-datasources.xml']
 
+  $api_templates = ['deployment/server/synapse-configs/default/api/_AuthorizeAPI_.xml',
+                   'deployment/server/synapse-configs/default/api/_RevokeAPI_.xml',
+                   'deployment/server/synapse-configs/default/api/_TokenAPI_.xml',
+  ]
   $common_templates = ['conf/user-mgt.xml', 'conf/datasources/master-datasources.xml', 'conf/tomcat/catalina-server.xml',]
 
   $securevault_templates = ["conf/security/secret-conf.properties", "conf/security/cipher-text.properties",]
@@ -88,6 +92,14 @@ class apimanager::gateway (
       directory => "wso2base",
       notify    => Service["wso2${amtype}"],
       require   => Deploy[$deployment_code];
+
+    $api_templates:
+      owner     => $owner,
+      group     => $group,
+      target    => $carbon_home,
+      directory => "wso2base",
+      notify    => Service["wso2${amtype}"],
+      require   => Deploy[$deployment_code];      
   }
 
   if $securevault {

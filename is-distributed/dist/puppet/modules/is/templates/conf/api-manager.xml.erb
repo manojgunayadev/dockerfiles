@@ -7,7 +7,7 @@
     <DataSourceName>jdbc/WSO2AM_DB</DataSourceName>
 
     <!-- This parameter is used when adding api management capability to other products like GReg, AS, DSS etc.-->
-    <GatewayType>Synapse</GatewayType>
+    <GatewayType>None</GatewayType>
 
   <!-- This parameter is used to enable the securevault support when try to publish endpoint secured APIs. Values should be "true" or "false".
   By default secure vault is disabled.-->
@@ -94,12 +94,12 @@
     	<!--
 		Signature algorithm. Accepts "SHA256withRSA" or "NONE". To disable signing explicitly specify "NONE".
 	-->
-	<!--SignatureAlgorithm>SHA256withRSA</SignatureAlgorithm-->
+	<SignatureAlgorithm>NONE</SignatureAlgorithm>
 
     <!--
 		Enable/Disable JWT generation. Default is false.
 	-->
-	<!--EnableTokenGeneration>false</EnableTokenGeneration-->
+	<EnableTokenGeneration>true</EnableTokenGeneration>
 
         <!--
             This parameter specifies which implementation should be used for generating the Token. JWTGenerator is the
@@ -370,12 +370,8 @@
 	     gateway https( /http, we recommend users to use 'https' endpoints for security purpose) url.
          Also please note that we should point gateway revoke service to key manager
 	-->
-	<%- if @amtype == 'keymanager' -%>
+
 	  <RevokeAPIURL>https://<%= @gateway_subdomain %>.<%= @am_subdomain %>.<%= @domain_name %>/revoke</RevokeAPIURL>
-	<%- else -%>
-	   <RevokeAPIURL>https://${carbon.local.ip}:${https.nio.port}/revoke</RevokeAPIURL>  
-	<%- end -%>
-	 
 
 	<!-- Whether to encrypt tokens when storing in the Database
 	Note: If changing this value to true, change the value of <TokenPersistenceProcessor> to

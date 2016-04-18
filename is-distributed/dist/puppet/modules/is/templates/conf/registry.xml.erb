@@ -41,10 +41,10 @@
             <location>/trunk/schemas/</location>            
 	</property>
         <property name="wsdlLocationConfiguration" type="xml">
-            <location>/trunk/wsdls/</location>            
+        <location>/trunk/wsdls/</location>            
 	</property>
         <property name="policyLocationConfiguration" type="xml">
-            <location>/trunk/policies/</location>            
+        <location>/trunk/policies/</location>            
 	</property>
 
         <filter class="org.wso2.carbon.registry.core.jdbc.handlers.filters.MediaTypeMatcher">
@@ -204,7 +204,7 @@
         <cacheId>wso2carbon@jdbc:h2:repository/database/WSO2CARBON_DB</cacheId>
     </remoteInstance-->
 
-	<%- if ((@clustering) && (@amtype == 'publisher' || @amtype == 'store'))  -%>
+	<%- if (@clustering)  -%>
 		<dbConfig name="govregistry">
 		<dataSource>jdbc/WSO2REG_DB</dataSource>
 		</dbConfig>

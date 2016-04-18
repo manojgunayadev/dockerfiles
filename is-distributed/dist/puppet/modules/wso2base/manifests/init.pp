@@ -16,10 +16,10 @@
 #
 # Class: wso2base
 #
-# This class installs WSO2 API Manager
+# This class installs WSO2 Identity Server
 #
 # Parameters:
-#  version            => '1.5.0',
+#  version            => '5.1.0',
 #  offset             => 0,
 #  config_database    => 'config',
 #  maintenance_mode   => 'zero',
@@ -27,7 +27,6 @@
 #  sub_cluster_domain => 'mgt',
 #  clustering         => true,
 #  cloud              => true,
-#  amtype             => 'gateway',
 #  owner              => 'root',
 #  group              => 'root',
 #  target             => '/mnt',
@@ -35,7 +34,7 @@
 #  port_mapping       => { 8280 => 9763, 8243 => 9443 }
 #
 # Actions:
-#   - Install WSO2 API Manager
+#   - Install WSO2 Identity Server
 #
 # Requires:
 #

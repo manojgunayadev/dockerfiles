@@ -71,7 +71,7 @@ ENV JAVA_HOME /opt/java
 
 WORKDIR /root
 
-EXPOSE 10397 8280 8243 9763 9443 
+EXPOSE 10397 9763 9443 
 
 # Run puppet and tail the carbon log file
 # Tailing the log file is required otherwise docker instance will get killed after running puppet apply

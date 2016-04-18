@@ -24,15 +24,6 @@ class is::params inherits wso2base::params {
     'password_enc' => ""
   }
   )
-
-  $apistats_database = hiera('apistats_database', {
-    'hostname'     => "$wso2base::params::mysql_server",
-    'port'         => "$wso2base::params::mysql_port",     
-    'database'     => 'dbApiStatus',
-    'username'     => 'ApiStatuUser',
-    'password'     => 'ApiStatuUserPass',
-    'password_enc' => ""
-  }
   )
 
 }

@@ -75,7 +75,7 @@ class wso2base::params {
   $config_database = hiera('config_database', {
     'hostname'     => "$mysql_server",
     'port'         => "$mysql_port",   
-    'database'     => 'dbApimConfig',
+    'database'     => 'dbISConfig',
     'username'     => 'ConfigDBUser',
     'password'     => 'ConfigDBUserPass',
     'password_enc' => ""
@@ -101,11 +101,6 @@ class wso2base::params {
     'password_enc' => ""
   }
   )
-  
-  $member1_host = hiera('member1_host','127.0.0.1')
-  $member1_port = hiera('member1_port','4000')
-  $member2_host = hiera('member2_host','')
-  $member2_port = hiera('member2_port','')
   $mgt_host_name = hiera('mgt_host_name','')
 
 }
