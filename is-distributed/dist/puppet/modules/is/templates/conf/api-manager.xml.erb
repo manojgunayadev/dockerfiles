@@ -333,12 +333,7 @@
         <ThriftClientConnectionTimeOut>10000</ThriftClientConnectionTimeOut>
         <ThriftServerPort>10397</ThriftServerPort>
 	    <ThriftServerHost><%= @keymanager_subdomain %>.<%= @am_subdomain %>.<%= @domain_name %></ThriftServerHost>
-	<%- if @clustering -%>
         <EnableThriftServer>false</EnableThriftServer>
-        <%- else -%>
-        <EnableThriftServer>true</EnableThriftServer>
-        <%- end -%>
-
         <!-- 
         Scope used for marking Application Tokens. If a token is generated with this scope, they will be treated as Application Access Tokens
         -->
