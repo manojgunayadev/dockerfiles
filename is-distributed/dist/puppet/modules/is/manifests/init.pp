@@ -65,11 +65,10 @@ class is (
   $service_templates = [
     'conf/api-manager.xml',
     'conf/registry.xml',
-    'conf/identity/identity.xml',
-    'conf/user-mgt.xml'
+    'conf/identity/identity.xml'
     ]
 
-  $common_templates = ['conf/axis2/axis2.xml', 'conf/carbon.xml', 'conf/datasources/master-datasources.xml', 'conf/tomcat/catalina-server.xml',]
+  $common_templates = ['conf/user-mgt.xml','conf/axis2/axis2.xml', 'conf/carbon.xml', 'conf/datasources/master-datasources.xml', 'conf/tomcat/catalina-server.xml',]
 
   $securevault_templates = ["conf/security/secret-conf.properties", "conf/security/cipher-text.properties",]
 
