@@ -580,14 +580,14 @@
 	and in  worker nodes set only AutoCheckout to true.
     -->
     <DeploymentSynchronizer>
-        <Enabled>false</Enabled>
-        <AutoCommit>false</AutoCommit>
-        <AutoCheckout>true</AutoCheckout>
-        <RepositoryType>svn</RepositoryType>
-        <SvnUrl>http://svnrepo.example.com/repos/</SvnUrl>
-        <SvnUser>username</SvnUser>
-        <SvnPassword>password</SvnPassword>
-        <SvnUrlAppendTenantId>true</SvnUrlAppendTenantId>
+          <Enabled>true</Enabled>
+          <AutoCommit>true</AutoCommit>
+          <AutoCheckout>true</AutoCheckout>
+          <RepositoryType>svn</RepositoryType>
+          <SvnUrl><%= @depsync_svn_repo %>/api-keymanager</SvnUrl>
+          <SvnUser><%= @svn_user %></SvnUser>
+          <SvnPassword><%= @svn_password %></SvnPassword>
+          <SvnUrlAppendTenantId>false</SvnUrlAppendTenantId>
     </DeploymentSynchronizer>
 
     <!-- Mediation persistence configurations. Only valid if mediation features are available i.e. ESB -->
