@@ -97,7 +97,7 @@ class apimanager::gateway (
       owner     => $owner,
       group     => $group,
       target    => $carbon_home,
-      directory => "wso2base",
+      directory => $deployment_code,
       notify    => Service["wso2${amtype}"],
       require   => Deploy[$deployment_code];      
   }
