@@ -55,6 +55,7 @@ class wso2base::params {
   $local_member_host = hiera('local_member_host','')
   $local_member_port = hiera('local_member_port','')
   $mesos_host = hiera('mesos_host','127.0.0.1')
+  $mesos_port = hiera('mesos_port','8080')
   $mesos_appid = hiera(mesos_appid,'')
   $mesos_apps = hiera(mesos_apps,'')
 
