@@ -28,7 +28,6 @@
         <Connector protocol="org.apache.coyote.http11.Http11NioProtocol"
                    port="9763"
 		<%- if @clustering -%>
-                   proxyPort="80"
 		<%- end -%>
                    redirectPort="9443"
                    bindOnInit="false"
@@ -56,7 +55,6 @@
         <Connector protocol="org.apache.coyote.http11.Http11NioProtocol"
                    port="9443"
 		    <%- if @clustering -%>
-                   proxyPort="443"
 		    <%- end -%>
                    bindOnInit="false"
                    sslProtocol="TLS"
@@ -90,8 +88,11 @@
 
             <Realm className="org.wso2.carbon.tomcat.ext.realms.CarbonTomcatRealm"/>
 
+            <Cluster className="org.wso2.carbon.core.session.CarbonTomcatSimpleTcpCluster"/>
+
             <Host name="localhost" unpackWARs="true" deployOnStartup="false" autoDeploy="false"
                   appBase="${carbon.home}/repository/deployment/server/webapps/">
+                <Valve className="org.wso2.carbon.tomcat.ext.valves.CarbonTomcatSessionReplicationValve"/>
                 <Valve className="org.wso2.carbon.tomcat.ext.valves.CarbonContextCreatorValve"/>
                 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="${carbon.home}/repository/logs"
                        prefix="http_access_" suffix=".log"
