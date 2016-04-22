@@ -33,7 +33,7 @@
 FROM ubuntu:14.04
 
 # Maintainer
-MAINTAINER Thilina Piyasundara <mail@thilina.org>
+MAINTAINER WSO2 <mail@wso2.org>
 
 # Update the container and install relevant packages
 RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
