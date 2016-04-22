@@ -70,7 +70,7 @@ class is (
     'conf/carbon.xml'
     ]
 
-  $common_templates = ['conf/user-mgt.xml', 'conf/datasources/master-datasources.xml', 'conf/tomcat/catalina-server.xml',]
+  $common_templates = ['conf/user-mgt.xml', 'conf/datasources/master-datasources.xml', 'conf/tomcat/catalina-server.xml', 'conf/tomcat/carbon/WEB-INF/web.xml']
 
   $securevault_templates = ["conf/security/secret-conf.properties", "conf/security/cipher-text.properties",]
 
