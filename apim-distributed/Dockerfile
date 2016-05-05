@@ -41,11 +41,11 @@ ENV APIM_NODE apimanager
 
 WORKDIR /root
 
-EXPOSE 10397 8280 8243 9763 9443 
+EXPOSE 22 10397 8280 8243 9763 9443 
 
 RUN apt-get update && apt-get install -y openssh-server supervisor
 RUN mkdir -p /var/run/sshd /var/log/supervisor
-
+git
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord"]
