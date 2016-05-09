@@ -579,44 +579,16 @@
 	In master nodes you need to set both AutoCommit and AutoCheckout to true
 	and in  worker nodes set only AutoCheckout to true.
     -->
-      <DeploymentSynchronizer>
-      <%- if @clustering -%>
-      <%- if @amtype == 'gateway' -%>
-          <Enabled>true</Enabled>
-        <%- if @sub_cluster_domain == 'mgt' -%>
-          <AutoCommit>true</AutoCommit>
-        <%- else -%>
-          <AutoCommit>false</AutoCommit>
-        <%- end -%>
-          <AutoCheckout>true</AutoCheckout>
-          <RepositoryType>svn</RepositoryType>
-          <SvnUrl><%= @depsync_svn_repo %>/api-gateway/</SvnUrl>
-          <SvnUser><%= @svn_user %></SvnUser>
-          <SvnPassword><%= @svn_password %></SvnPassword>
-          <SvnUrlAppendTenantId>false</SvnUrlAppendTenantId>
-      <%- elsif @amtype == 'pubstore' -%>
-          <Enabled>true</Enabled>
-          <AutoCommit>true</AutoCommit>
-          <AutoCheckout>true</AutoCheckout>
-          <RepositoryType>svn</RepositoryType>
-          <SvnUrl><%= @depsync_svn_repo %>/api-pubstore</SvnUrl>
-          <SvnUser><%= @svn_user %></SvnUser>
-          <SvnPassword><%= @svn_password %></SvnPassword>
-          <SvnUrlAppendTenantId>false</SvnUrlAppendTenantId>
-      <%- elsif @amtype == 'keymanager' -%>
-          <Enabled>true</Enabled>
-          <AutoCommit>true</AutoCommit>
-          <AutoCheckout>true</AutoCheckout>
-          <RepositoryType>svn</RepositoryType>
-          <SvnUrl><%= @depsync_svn_repo %>/api-keymanager</SvnUrl>
-          <SvnUser><%= @svn_user %></SvnUser>
-          <SvnPassword><%= @svn_password %></SvnPassword>
-          <SvnUrlAppendTenantId>false</SvnUrlAppendTenantId>
-      <%- end -%>
-      <%- else -%>
-          <Enabled>false</Enabled>
-      <%- end -%>
-      </DeploymentSynchronizer>
+    <!--<DeploymentSynchronizer>
+        <Enabled>true</Enabled>
+        <AutoCommit>false</AutoCommit>
+        <AutoCheckout>true</AutoCheckout>
+        <RepositoryType>svn</RepositoryType>
+        <SvnUrl>http://svnrepo.example.com/repos/</SvnUrl>
+        <SvnUser>username</SvnUser>
+        <SvnPassword>password</SvnPassword>
+        <SvnUrlAppendTenantId>true</SvnUrlAppendTenantId>
+    </DeploymentSynchronizer>-->
 
     <!-- Deployment Synchronizer Configuration. Uncomment the following section when running with "registry based" dep sync.
         In master nodes you need to set both AutoCommit and AutoCheckout to true
