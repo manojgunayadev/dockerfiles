@@ -1,3 +1,34 @@
+# Dockerfile to build WSO2 container
+#
+# Copyright 2014 H. Thilina C. Piyasundara
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Usage :- 
+# Build the container
+# 	cd <path>/dockerfiles/base
+# 	sudo docker build -t WSO2container .
+# 
+# Run a container using the buled image
+# 	sudo docker run -d -i -t --name WSO2Container1 WSO2container
+#
+# Login to the running container
+# 	sudo docker attach WSO2Container1
+#
+# Exit from a attached container
+# 	^p^q (Ctrl+p and Ctrl+q)
+#
+	
 # Use Ubuntu base image
 FROM ubuntu:14.04
 
@@ -41,13 +72,8 @@ ENV APIM_NODE apimanager
 
 WORKDIR /root
 
-EXPOSE 22 10397 8280 8243 9763 9443
+EXPOSE 10397 8280 8243 9763 9443 
 
-RUN apt-get update && apt-get install -y openssh-server && apt-get -y install rsync supervisor
-RUN apt-get install -y python python-dev python-distribute python-pip
-RUN pip install supervisor-stdout
-RUN mkdir -p /var/run/sshd /var/log/supervisor
-
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-CMD ["/usr/bin/supervisord"]
+# Run puppet and tail the carbon log file
+# Tailing the log file is required otherwise docker instance will get killed after running puppet apply
+CMD /bin/bash -c 'puppet apply --modulepath=/etc/puppet/modules/ -e "include $APIM_NODE" && tailf /mnt/*/wso2am-1.10.0/repository/logs/wso2carbon.log'
