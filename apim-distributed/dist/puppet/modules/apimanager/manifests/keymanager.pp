@@ -26,7 +26,7 @@ class apimanager::keymanager (
   $cloud              = false,
   $owner              = 'root',
   $group              = 'root',
-  $target             = "/mnt/$ipaddress",
+  $target             = "/mnt/wso2",
   $auto_scaler        = false,
   $auto_failover      = false,
   $securevault        = false,) inherits apimanager::params {
