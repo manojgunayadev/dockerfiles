@@ -47,6 +47,7 @@ RUN apt-get update && apt-get install -y openssh-server && apt-get -y install rs
 RUN apt-get install -y python python-dev python-distribute python-pip
 RUN pip install supervisor-stdout
 RUN mkdir -p /var/run/sshd /var/log/supervisor
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
