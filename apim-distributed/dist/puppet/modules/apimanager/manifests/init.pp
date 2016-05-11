@@ -55,7 +55,7 @@ class apimanager (
   $cloud              = false,
   $owner              = 'root',
   $group              = 'root',
-  $target             = "/mnt/wso2",
+  $target             = "/mnt",
   $auto_scaler        = false,
   $auto_failover      = false,
   $securevault        = false,) inherits apimanager::params {
