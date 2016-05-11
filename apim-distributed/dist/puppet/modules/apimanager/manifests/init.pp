@@ -55,7 +55,7 @@ class apimanager (
   $cloud              = false,
   $owner              = 'root',
   $group              = 'root',
-  $target             = "/mnt",
+  $target             = "/mnt/$ipaddress",
   $auto_scaler        = false,
   $auto_failover      = false,
   $securevault        = false,) inherits apimanager::params {
