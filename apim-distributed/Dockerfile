@@ -48,6 +48,8 @@ RUN apt-get install -y python python-dev python-distribute python-pip
 RUN pip install supervisor-stdout
 RUN mkdir -p /var/run/sshd /var/log/supervisor
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+ADD id_rsa /root/.ssh/id_rsa
+ADD id_rsa.pub /root/.ssh/id_rsa.pub
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
