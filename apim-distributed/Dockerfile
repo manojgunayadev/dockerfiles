@@ -52,7 +52,6 @@ ADD id_rsa /root/.ssh/id_rsa
 ADD id_rsa.pub /root/.ssh/id_rsa.pub
 RUN chmod 600 /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa.pub
-RUN chmod 644 /root/.ssh/known_hosts
 RUN sudo chmod 755 /root/.ssh
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
