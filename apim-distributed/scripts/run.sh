@@ -20,7 +20,6 @@ if [ "${AUTHORIZED_KEYS}" != "**None**" ]; then
     for x in $arr
 
     do
-
         x=$(echo $x |sed -e 's/^ *//' -e 's/ *$//')
 
         cat /root/.ssh/authorized_keys | grep "$x" >/dev/null 2>&1

@@ -48,18 +48,7 @@ RUN apt-get update && apt-get install -y openssh-server && apt-get install pwgen
 RUN apt-get install -y python python-dev python-distribute python-pip
 RUN pip install supervisor-stdout
 RUN mkdir -p /var/run/sshd /var/log/supervisor
-
-RUN rm -f /etc/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_rsa_key
-
-RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_ecdsa_key
-
-RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key 
-
-RUN sed -i "s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config
-
-RUN sed -i "s/UsePAM.*/UsePAM yes/g" /etc/ssh/sshd_config
-
-RUN ssh-keygen -A
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
