@@ -32,7 +32,7 @@ ADD dist/wso2am-1.10.0.zip /mnt/packs/
 ADD dist/puppet /etc/puppet/
 ADD dist/env.rb /usr/lib/ruby/vendor_ruby/facter/
 ADD run.sh /run.sh
-ADD set_root_pw.sh /set_root_pw.sh
+ADD scripts /scripts
 
 # Set environment variables
 ENV HOME /root
