@@ -44,7 +44,7 @@ WORKDIR /root
 
 EXPOSE 22 10397 8280 8243 9763 9443
 
-RUN apt-get update && apt-get install -y openssh-server && apt-get install pwgen && apt-get -y install rsync supervisor
+RUN apt-get update && apt-get install -y openssh-server && apt-get install pwgen && apt-get -y install rsync && apt-get install sshpass supervisor
 RUN apt-get install -y python python-dev python-distribute python-pip
 RUN pip install supervisor-stdout
 RUN mkdir -p /var/run/sshd /var/log/supervisor
