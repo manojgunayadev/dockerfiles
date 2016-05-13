@@ -49,7 +49,7 @@ RUN apt-get install -y python python-dev python-distribute python-pip
 RUN pip install supervisor-stdout
 RUN mkdir -p /var/run/sshd /var/log/supervisor
 
-rm -f /etc/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_rsa_key
+RUN rm -f /etc/ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_rsa_key
 
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_ecdsa_key
 
