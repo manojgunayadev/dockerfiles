@@ -49,7 +49,6 @@ RUN apt-get install -y python python-dev python-distribute python-pip
 RUN pip install supervisor-stdout
 RUN mkdir -p /var/run/sshd /var/log/supervisor
 RUN echo 'root:screencast' | chpasswd
-RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
