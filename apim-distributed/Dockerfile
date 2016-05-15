@@ -54,7 +54,4 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY rsync.sh /etc/rsyncd.conf
-COPY rsyncd.scrt /etc/rsyncd.secrets
-
 CMD ["/usr/bin/supervisord"]
